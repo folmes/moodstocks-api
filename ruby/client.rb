@@ -53,6 +53,7 @@ module Moodstocks
     class << self
       ECHO      = '/items/echo'
       RECOGNIZE = '/items/recognize'
+      UPDATE    = '/items/%s'
       
       # This method simply echoes all parameters back in the JSON response
       def echo(params = {}); get(ECHO, :query => params) end
@@ -80,6 +81,53 @@ module Moodstocks
           get(RECOGNIZE, :query => params.update(:image_url => query))
         end
       end # recognize
+      
+      # This method creates/updates a given item
+      #
+      # * uid: the item unique identifier (alphanumeric case-sensitive)
+      #        e.g. "1234ABc"
+      # * item: the item attributes, either in hash or raw XML string format
+      #
+      # For example:
+      #
+      #  include Moodstocks
+      #
+      #  item = { :image_link => "http://www.example.com/11.jpg", :availability => "1" }
+      #  resp = Api.update("1234ABc", item)
+      #
+      #  xml =  "<item><image_link><![CDATA[http://www.example.com/22.jpg]]></image_link>"
+      #  xml << "<availability>0</availability>"
+      #  xml << "<property name=\"foo\">bar</property>"
+      #  xml << "<property name=\"baz\">hep</property>"
+      #  xml << "</item>"
+      #  resp = Api.update("4682f", xml)
+      # 
+      # see http://github.com/Moodstocks/moodstocks-api-kits/wiki
+      # for more details on items specifications and mandatory attributes
+      def update(uid, item)
+        headers = { 'Content-Type' => 'application/xml' }
+        
+        body = if item.is_a?(Hash)
+          xml = "<item>"
+          unless item[:image_link].nil?
+            xml << "<image_link><![CDATA[#{item[:image_link]}]]></image_link>"
+          end
+          unless item[:availability].nil?
+            xml << "<availability>#{item[:availability]}</availability>"
+          end
+          if item[:properties].is_a?(Hash)
+            item[:properties].each do |k, v|
+              xml << "<property name=\"#{k}\">#{v}</property>"
+            end
+          end
+          xml << "</item>"
+        else
+          item
+        end
+        
+        put(UPDATE % uid, :body => body, :headers => headers)
+      end # put
+      
     end # class << self
   end # Api
 end # Moodstocks
