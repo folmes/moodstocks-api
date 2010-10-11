@@ -54,6 +54,7 @@ module Moodstocks
       ECHO      = '/items/echo'
       RECOGNIZE = '/items/recognize'
       UPDATE    = '/items/%s'
+      DESTROY   = '/items/%s'
       
       # This method simply echoes all parameters back in the JSON response
       def echo(params = {}); get(ECHO, :query => params) end
@@ -126,7 +127,13 @@ module Moodstocks
         end
         
         put(UPDATE % uid, :body => body, :headers => headers)
-      end # put
+      end # update
+      
+      # Destroy an item by id (there's no undo!)
+      #
+      # * uid: the item unique identifier (alphanumeric case-sensitive)
+      #        e.g. "1234ABc"
+      def destroy(uid); delete(DESTROY % uid) end
       
     end # class << self
   end # Api
