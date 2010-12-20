@@ -43,7 +43,7 @@ $CURL_OPTS    = array(
  */
 
 $opts = $CURL_OPTS;
-$opts[CURLOPT_URL] = $API_BASE_URL . "items/echo";
+$opts[CURLOPT_URL] = $API_BASE_URL . "v1/echo";
 
 $ch = curl_init(); 
 curl_setopt_array($ch, $opts);
@@ -59,7 +59,7 @@ curl_close($ch);
 
 $params = array('image_url' => 'http://www.example.com/path/to/1234.jpg');
 
-$opts[CURLOPT_URL] = $API_BASE_URL . "items/recognize";
+$opts[CURLOPT_URL] = $API_BASE_URL . "v1/recognize";
 $opts[CURLOPT_POSTFIELDS] = http_build_query($params);
 
 $ch = curl_init(); 
@@ -80,7 +80,7 @@ curl_close($ch);
  * aka file upload with multipart POST
  */
 
-$opts[CURLOPT_URL] = $API_BASE_URL . "items/recognize";
+$opts[CURLOPT_URL] = $API_BASE_URL . "v1/recognize";
 $opts[CURLOPT_POSTFIELDS] = array("image_file"=>"@/path/to/local/5678.jpg");
 
 $ch = curl_init(); 

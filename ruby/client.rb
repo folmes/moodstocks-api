@@ -51,11 +51,11 @@ module Moodstocks
     digest_auth 'ApIkEy', 'SeCrEtKeY'
     
     class << self
-      ECHO      = '/items/echo'
-      RECOGNIZE = '/items/recognize'
-      UPDATE    = '/items/%s'
-      DESTROY   = '/items/%s'
-      
+      ECHO      = '/v1/echo'
+      RECOGNIZE = '/v1/recognize'
+      UPDATE    = '/v1/item/%s'
+      DESTROY   = '/v1/item/%s'
+            
       # This method simply echoes all parameters back in the JSON response
       def echo(params = {}); get(ECHO, :query => params) end
     

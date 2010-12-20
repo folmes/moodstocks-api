@@ -33,7 +33,7 @@ class MoodstocksAPI:
   def __init__(self, key, secret):
     """
     Usage: m_api = MoodstocksAPI( my_key, my_secret )
-    See http://api.moodstocks.com/en/documentation.
+    See https://github.com/Moodstocks/moodstocks-api-kits/wiki/Developer-documentation.
     """
     pass_manager = urllib2.HTTPPasswordMgrWithDefaultRealm()
     pass_manager.add_password(None, "http://api.moodstocks.com", key, secret)
@@ -53,7 +53,7 @@ class MoodstocksAPI:
     Usage: m_api.echo(hash_of_strings)
     It should return the same hash.
     """
-    ep = "http://api.moodstocks.com/items/echo"
+    ep = "http://api.moodstocks.com/v1/echo"
     return self.__results(self.__get_request(ep, params))
 
   def recognize(self, query, filters=None):
@@ -63,7 +63,7 @@ class MoodstocksAPI:
     If query is a local filename a POST request will be performed.
     Returns a list of matches.
     """
-    ep = "http://api.moodstocks.com/items/recognize"
+    ep = "http://api.moodstocks.com/v1/recognize"
     data = { "filters": filters } if filters else {}
     if len(urlparse(query).scheme): # query is an URL
       data["image_url"] = query
