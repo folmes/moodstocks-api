@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2010 Moodstocks SAS
+# Copyright (c) 2010-2011 Moodstocks SAS
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -56,7 +56,7 @@ class MoodstocksAPI:
     ep = "http://api.moodstocks.com/v1/echo"
     return self.__results(self.__get_request(ep, params))
 
-  def recognize(self, query, filters=None):
+  def recognize(self, query):
     """
     Usage: m_api.request(query)
     If `query` is a URL a GET request will be performed.
@@ -64,7 +64,7 @@ class MoodstocksAPI:
     Returns a list of matches.
     """
     ep = "http://api.moodstocks.com/v1/recognize"
-    data = { "filters": filters } if filters else {}
+    data = {}
     if len(urlparse(query).scheme): # query is an URL
       data["image_url"] = query
       ans = self.__get_request(ep, data)

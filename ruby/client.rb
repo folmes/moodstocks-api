@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2010 Moodstocks SAS
+# Copyright (c) 2010-2011 Moodstocks SAS
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -62,10 +62,8 @@ module Moodstocks
       # This method performs image recognition
       #
       # * query - The image file or URL to be recognized
-      # * filters - optional filter string used to narrow down the search
-      #             e.g. "category = Books and price <= 120"
-      def recognize(query, filters = nil)
-        params = { :filters => filters }
+      def recognize(query)
+        params = {}
         uri = URI.parse(query)
         case uri.scheme
         when nil
@@ -93,14 +91,10 @@ module Moodstocks
       #
       #  include Moodstocks
       #
-      #  item = { :image_link => "http://www.example.com/11.jpg", :availability => "1" }
+      #  item = { :image_link => "http://www.example.com/11.jpg" }
       #  resp = Api.update("1234ABc", item)
       #
-      #  xml =  "<item><image_link><![CDATA[http://www.example.com/22.jpg]]></image_link>"
-      #  xml << "<availability>0</availability>"
-      #  xml << "<property name=\"foo\">bar</property>"
-      #  xml << "<property name=\"baz\">hep</property>"
-      #  xml << "</item>"
+      #  xml =  "<item><image_link><![CDATA[http://www.example.com/22.jpg]]></image_link></item>"
       #  resp = Api.update("4682f", xml)
       # 
       # see http://github.com/Moodstocks/moodstocks-api-kits/wiki
@@ -112,14 +106,6 @@ module Moodstocks
           xml = "<item>"
           unless item[:image_link].nil?
             xml << "<image_link><![CDATA[#{item[:image_link]}]]></image_link>"
-          end
-          unless item[:availability].nil?
-            xml << "<availability>#{item[:availability]}</availability>"
-          end
-          if item[:properties].is_a?(Hash)
-            item[:properties].each do |k, v|
-              xml << "<property name=\"#{k}\">#{v}</property>"
-            end
           end
           xml << "</item>"
         else
@@ -156,8 +142,7 @@ if __FILE__ == $0
   puts results.inspect
   # => {"results"=>{"matches"=>["4acEF12", "129ab"]}, "message"=>"", "status"=>"ok"}
   
-  # Now perform image recognition by POSTing a query image and specifying
-  # a filter (that should be relevant with the data you've imported)
-  resp = Moodstocks::Api.recognize(QUERY_FILE, "director = Woody Allen")
+  # Now perform image recognition by POSTing a query image
+  resp = Moodstocks::Api.recognize(QUERY_FILE)
   puts resp.parsed_response.inspect
 end
