@@ -3,7 +3,7 @@
 ## Description
 
 This is a collection of snippets written in various languages
-that act as [Moodstocks API](http://www.moodstocks.com/visual-search-as-a-service/)
+that act as [Moodstocks API](http://www.moodstocks.com/discover-our-products/moodstocks-api/)
 clients.
 
 If you don't see an example written with your favorite language, feel free to
@@ -11,7 +11,7 @@ write the code and we'll add it!
 
 ## About the API
 
-[Moodstocks API](http://www.moodstocks.com/visual-search-as-a-service/)
+[Moodstocks API](http://www.moodstocks.com/discover-our-products/moodstocks-api/)
 enables you to integrate visual search into your app with no effort, through an
 HTTP REST web service with responses delivered in JSON format.
 
