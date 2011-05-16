@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<title>Moodstocks API v2 usage example</title>
+<script src="fermata.js"></script>
+<script>
+  var api = fermata.api({
+    url: "http://api.moodstocks.com",
+    user:"tuldTHueMYlZOioR7YDD",
+    password:"XSM71hYeIcUeUdqG"
+  })('v2');
+  var disp = function(err,result){
+    document.write("<p>"+JSON.stringify(result)+"</p>")
+  }
+</script>
+</head>
+<body>
+<script>
+  api('echo')({foo:"bar",bacon:"chunky"}).get(disp);
+</script>
+</body>
+</html>
