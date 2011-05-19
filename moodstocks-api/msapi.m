@@ -45,11 +45,11 @@ void MSDisp(ASIHTTPRequest* request) {
 
 void MSErrDisp(ASIHTTPRequest* request) {
     NSString* context = [[request userInfo] objectForKey:@"context"];
-    
+
     NSLog(@"[%@] REQUEST FAILED, code: %d", context, [[request error] code]);
 }
 
-int main(int argc, char *argv[]) {    
+int main(int argc, char *argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
     /**
@@ -79,12 +79,12 @@ int main(int argc, char *argv[]) {
     NSString* objectURL = [kMSAPIRefURL stringByAppendingFormat:@"/%@", kMSID];
     {
         ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:objectURL]];
-        [request setUserInfo:[NSDictionary dictionaryWithObject:@"add" forKey:@"context"]]; 
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"add" forKey:@"context"]];
         [request setRequestMethod:@"PUT"];
         [request setData:imageData forKey:@"image_file"];
         [request setAuthenticationScheme:(NSString *) kCFHTTPAuthenticationSchemeDigest];
         [request setUsername:kMSAPIKey];
-        [request setPassword:kMSAPISecret];    
+        [request setPassword:kMSAPISecret];
         [request startSynchronous];
         NSError* error = [request error];
         if (!error)
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
         [request setData:imageData forKey:@"image_file"];
         [request setAuthenticationScheme:(NSString *) kCFHTTPAuthenticationSchemeDigest];
         [request setUsername:kMSAPIKey];
-        [request setPassword:kMSAPISecret];    
+        [request setPassword:kMSAPISecret];
         [request startSynchronous];
         NSError* error = [request error];
         if (!error)
@@ -121,7 +121,7 @@ int main(int argc, char *argv[]) {
         [request setRequestMethod:@"DELETE"];
         [request setAuthenticationScheme:(NSString *) kCFHTTPAuthenticationSchemeDigest];
         [request setUsername:kMSAPIKey];
-        [request setPassword:kMSAPISecret];    
+        [request setPassword:kMSAPISecret];
         [request startSynchronous];
         NSError* error = [request error];
         if (!error)

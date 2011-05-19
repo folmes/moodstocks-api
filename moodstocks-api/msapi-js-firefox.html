@@ -14,7 +14,7 @@
 
       var disp = function(text){
         var out = document.getElementById('output')
-        var newp = document.createElement("p");        
+        var newp = document.createElement("p");
         newp.innerHTML = text;
         out.appendChild(newp);
       }
@@ -56,7 +56,7 @@
         multi_stream.appendStream(tail_stream);
 
         var req = new XMLHttpRequest();
-        req.open(verb, url, false, user, password); 
+        req.open(verb, url, false, user, password);
         req.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + boundaryString);
         req.setRequestHeader("Content-length", multi_stream.available());
         req.send(multi_stream);
