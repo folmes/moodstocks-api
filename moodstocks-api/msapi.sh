@@ -1,6 +1,6 @@
 # Settings
-key="tuldTHueMYlZOioR7YDD"
-secret="XSM71hYeIcUeUdqG"
+key="YourApiKey"
+secret="YourApiSecret"
 image_filename="sample.jpg"
 id="test1234"
 
