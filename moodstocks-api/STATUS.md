@@ -33,12 +33,12 @@ Lua
   [ ] Looking up objects
   [ ] Removing reference images
 
-JavaScript
+JavaScript (Firefox)
 
   [x] Authenticating with your API key (Echo service)
-  [ ] Adding objects to recognize
-  [ ] Looking up objects
-  [ ] Removing reference images
+  [x] Adding objects to recognize
+  [x] Looking up objects
+  [x] Removing reference images
 
 Java
 
@@ -63,8 +63,8 @@ Perl
 
 C
 
-  [ ] Authenticating with your API key (Echo service)
-  [ ] Adding objects to recognize
-  [ ] Looking up objects
-  [ ] Removing reference images
+  [x] Authenticating with your API key (Echo service)
+  [x] Adding objects to recognize
+  [x] Looking up objects
+  [x] Removing reference images
 
