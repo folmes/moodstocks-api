@@ -42,24 +42,24 @@ JavaScript (Firefox)
 
 Java
 
-  [ ] Authenticating with your API key (Echo service)
-  [ ] Adding objects to recognize
-  [ ] Looking up objects
-  [ ] Removing reference images
+  [x] Authenticating with your API key (Echo service)
+  [x] Adding objects to recognize
+  [x] Looking up objects
+  [x] Removing reference images
 
 ObjC
 
-  [ ] Authenticating with your API key (Echo service)
-  [ ] Adding objects to recognize
-  [ ] Looking up objects
-  [ ] Removing reference images
+  [x] Authenticating with your API key (Echo service)
+  [x] Adding objects to recognize
+  [x] Looking up objects
+  [x] Removing reference images
 
 Perl
 
-  [ ] Authenticating with your API key (Echo service)
-  [ ] Adding objects to recognize
-  [ ] Looking up objects
-  [ ] Removing reference images
+  [x] Authenticating with your API key (Echo service)
+  [x] Adding objects to recognize
+  [x] Looking up objects
+  [x] Removing reference images
 
 C
 
