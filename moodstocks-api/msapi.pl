@@ -21,17 +21,19 @@ sub disp{print shift->content."\n"}
 disp($browser->get($ep."/echo?foo=bar"));
 
 # Adding objects to recognize
-disp($browser->request(
-  POST $sample_resource,
-  Content_Type => 'form-data',
-  Content => [image_file => ["$image_filename"]]
-));
+my $rq = POST(
+  $sample_resource,
+  Content_Type => "form-data",
+  Content => [image_file => [$image_filename]]
+);
+$rq->method("PUT");
+disp($browser->request($rq));
 
 # Looking up objects
 disp($browser->request(
   POST $ep."/search",
-  Content_Type => 'form-data',
-  Content => [image_file => ["$image_filename"]]
+  Content_Type => "form-data",
+  Content => [image_file => [$image_filename]]
 ));
 
 # Removing reference images
