@@ -13,21 +13,29 @@ package moodstocks;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.utils.URIUtils;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 
@@ -38,7 +46,10 @@ public class ApiDemo {
     private static String secret = "YourApiSecret";
     private static String imageFilename =
             ApiDemo.class.getResource("sample.jpg").getPath();
+    private static String imageUrl = "http://api.moodstocks.com/static/sample-book.jpg";
     private static String sampleId = "test1234";
+    
+    // Boilerplate
     private static HttpHost targetHost;
     private static BasicHttpContext context;
     private static DefaultHttpClient client;
@@ -65,7 +76,7 @@ public class ApiDemo {
         System.out.println(EntityUtils.toString(entity));
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
 
         init();
 
@@ -91,9 +102,16 @@ public class ApiDemo {
         rq3.setEntity(multipartContent);
         disp(rq3);
 
-        // Removing reference images
-        HttpDelete rq4 = new HttpDelete(sampleResource);
+        // Updating a reference & using a hosted image
+        List<NameValuePair> rq4params = new ArrayList<NameValuePair>();
+        rq4params.add(new BasicNameValuePair("image_url", imageUrl));
+        String rq4qs = URLEncodedUtils.format(rq4params, "UTF-8");
+        HttpPut rq4 = new HttpPut("/v2/ref/" + sampleId + "?" + rq4qs);
         disp(rq4);
+        
+        // Removing reference images
+        HttpDelete rq5 = new HttpDelete(sampleResource);
+        disp(rq5);
 
         clean();
 
