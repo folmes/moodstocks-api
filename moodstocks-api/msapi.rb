@@ -4,6 +4,7 @@
 @@key = "YourApiKey"
 @@secret = "YourApiSecret"
 image_filename = "sample.jpg"
+image_url = "http://api.moodstocks.com/static/sample-book.jpg"
 id = "test1234"
 
 # HTTParty HTTP Digest Auth patch
@@ -40,6 +41,9 @@ disp(MSApi::put("#{ep}/ref/#{id}",imgdata))
 
 # Looking up objects
 disp(MSApi::post("#{ep}/search",imgdata))
+
+# Updating a reference & using a hosted image
+disp(MSApi::put("#{ep}/ref/#{id}",{body:"",query:{image_url:image_url}}))
 
 # Removing reference images
 disp(MSApi::delete("#{ep}/ref/#{id}"))

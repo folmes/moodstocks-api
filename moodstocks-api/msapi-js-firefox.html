@@ -10,6 +10,7 @@
       var user = "YourApiKey"
       var password = "YourApiSecret"
       image_filename = "sample.jpg"
+      image_url = "http://api.moodstocks.com/static/sample-book.jpg"
       var image_id = "test1234"
 
       var disp = function(text){
@@ -84,6 +85,21 @@
         call_with_image("POST",api_ep+"/search")
       }
 
+      function update_ref_from_url(){
+        // Updating a reference & using a hosted image
+        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+        var req = new XMLHttpRequest();
+        var params = "image_url=" + encodeURIComponent(image_url);
+        req.open( "PUT",
+                  api_ep+"/ref/"+image_id,
+                  false, user, password );
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader("Content-length", params.length);
+        req.setRequestHeader("Connection", "close");
+        req.send(params);
+        if (req.status == 200) { disp(req.responseText); }
+      }
+
       function remove_ref(){
         // Removing reference images
         netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
@@ -99,6 +115,7 @@
         auth_with_api_key();
         add_ref();
         search_object();
+        update_ref_from_url();
         remove_ref();
       }
 

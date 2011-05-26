@@ -5,6 +5,7 @@ from MultipartPostHandler import MultipartPostHandler
 key = "YourApiKey"
 secret = "YourApiSecret"
 image_filename = "sample.jpg"
+image_url = "http://api.moodstocks.com/static/sample-book.jpg"
 id = "test1234"
 
 # urllib boilerplate
@@ -32,6 +33,11 @@ disp(multipart_opener.open(req))
 
 # Looking up objects
 disp(multipart_opener.open(api_ep+"/search",imgdata))
+
+# Updating a reference & using a hosted image
+req = urllib2.Request(api_ep+"/ref/"+id,{"image_url":image_url})
+req.get_method = lambda: "PUT"
+disp(multipart_opener.open(req))
 
 # Removing reference images
 req = urllib2.Request(api_ep+"/ref/"+id,"")

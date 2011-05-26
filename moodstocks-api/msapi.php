@@ -4,6 +4,7 @@
 $key = "YourApiKey";
 $secret = "YourApiSecret";
 $image_filename = "sample.jpg";
+$image_url = "http://api.moodstocks.com/static/sample-book.jpg";
 $id = "test1234";
 
 // CURL
@@ -40,6 +41,13 @@ disp($opts);
 $opts = $curl_opts;
 $opts[CURLOPT_URL] = $api_ep."/search";
 $opts[CURLOPT_POSTFIELDS] = array("image_file"=>"@".$image_filename);
+disp($opts);
+
+// Updating a reference & using a hosted image
+$opts = $curl_opts;
+$opts[CURLOPT_URL] = $api_ep."/ref/".$id;
+$opts[CURLOPT_POSTFIELDS] = array("image_url"=>$image_url);
+$opts[CURLOPT_CUSTOMREQUEST] = "PUT";
 disp($opts);
 
 // Removing reference images

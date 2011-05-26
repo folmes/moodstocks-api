@@ -7,6 +7,7 @@ use LWP::Authen::Digest;
 my $key = "YourApiKey";
 my $secret = "YourApiSecret";
 my $image_filename = "sample.jpg";
+my $image_url = "http://api.moodstocks.com/static/sample-book.jpg";
 my $sample_id = "test1234";
 
 # Boilerplate
@@ -35,6 +36,15 @@ disp($browser->request(
   Content_Type => "form-data",
   Content => [image_file => [$image_filename]]
 ));
+
+# Updating a reference & using a hosted image
+$rq = POST(
+  $sample_resource,
+  Content_Type => "form-data",
+  Content => [image_url => $image_url]
+);
+$rq->method("PUT");
+disp($browser->request($rq));
 
 # Removing reference images
 disp($browser->request(HTTP::Request->new("DELETE",$sample_resource)));
