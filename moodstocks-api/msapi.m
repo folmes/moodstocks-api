@@ -29,10 +29,11 @@
 static NSString* kMSAPIKey            = @"kEy";
 static NSString* kMSAPISecret         = @"sEcReT";
 static NSString* kMSImageFilename     = @"sample.jpg";
+static NSString* kMSImageURL          = @"http://api.moodstocks.com/static/sample-book.jpg";
 static NSString* kMSID                = @"test1234";
-static NSString * kMSAPIEchoURL       = @"http://api.moodstocks.com/v2/echo";
-static NSString * kMSAPIRefURL        = @"http://api.moodstocks.com/v2/ref";
-static NSString * kMSAPISearchURL     = @"http://api.moodstocks.com/v2/search";
+static NSString* kMSAPIEchoURL        = @"http://api.moodstocks.com/v2/echo";
+static NSString* kMSAPIRefURL         = @"http://api.moodstocks.com/v2/ref";
+static NSString* kMSAPISearchURL      = @"http://api.moodstocks.com/v2/search";
 
 void MSDisp(ASIHTTPRequest* request) {
     NSString* context = [[request userInfo] objectForKey:@"context"];
@@ -111,6 +112,25 @@ int main(int argc, char *argv[]) {
         else
             MSErrDisp(request);
     } // end of search
+
+    /**
+     * Updating a reference & using a hosted image
+     */
+    {
+        ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:objectURL]];
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"update" forKey:@"context"]]; 
+        [request setRequestMethod:@"PUT"];
+        [request setPostValue:kMSImageURL forKey:@"image_url"];
+        [request setAuthenticationScheme:(NSString *) kCFHTTPAuthenticationSchemeDigest];
+        [request setUsername:kMSAPIKey];
+        [request setPassword:kMSAPISecret];    
+        [request startSynchronous];
+        NSError* error = [request error];
+        if (!error)
+            MSDisp(request);
+        else
+            MSErrDisp(request);
+    } // end of update with a hosted image
 
     /**
      * Removing reference images
