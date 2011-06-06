@@ -1,0 +1,6 @@
+export MS_API_KEY='***'
+export MS_API_SECRET='***'
+export TWITTER_CONSUMER_KEY='***'
+export TWITTER_CONSUMER_SECRET='***'
+export TWITTER_OAUTH_TOKEN='***'
+export TWITTER_OAUTH_SECRET='***'
