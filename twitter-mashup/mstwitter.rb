@@ -65,6 +65,19 @@ end end
 
 module MsTwitter class Worker
 
+  def image_url_for(url)
+    return nil unless url.is_a?(String)
+    url.strip!
+    uri = URI.parse(url)
+    if url.match(/\.jpg$/)
+      url
+    elsif url.match(/^http\:\/\/yfrog\./)
+      "#{url}:iphone"
+    elsif url.match(/^http\:\/\/twitpic\./)
+      "http://twitpic.com/show/iphone#{uri.path}.jpg"
+    else nil end
+  end
+
   def initialize
     nil.must_not_be_in(CFG[:twitter].values)
     nil.must_not_be_in(CFG[:msapi].values)
@@ -94,8 +107,14 @@ module MsTwitter class Worker
         next if user == @my_screen_name
         puts "From @#{user}: #{status[:text]}"
         status[:entities][:urls].each do |x|
-          next if (image_url = x[:expanded_url] || x[:url]).blank?
-          next unless (text = MsApi.search(image_url))
+          image_url = image_url_for(orig_url = x[:expanded_url] || x[:url])
+          puts "url: #{orig_url} -> #{image_url}"
+          if (image_url = image_url_for(x[:expanded_url]||x[:url])).nil?
+            puts "Invalid URL"; next
+          end
+          unless (text = MsApi.search(image_url))
+            puts "Not found"; next
+          end
           puts "Sending @#{user}: #{text}"
           (to_send = "@#{user} #{text}").length.must_be <= 140
           @twitter.update(to_send)
