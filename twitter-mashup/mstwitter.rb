@@ -108,7 +108,7 @@ module MsTwitter class Worker
 
 end end
 
-module MsTwitter class Cli; class << self
+module MsTwitter module Cli; class << self
 
   def add(*args)
     usage unless args.size == 2
