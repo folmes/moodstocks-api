@@ -1,5 +1,5 @@
 require "as-extensions"
-ASE::need %w{map must_be twitter twitterstream httparty rest-client base64}
+ASE::need %w{map must_be twitter twitterstream httparty rest-client}
 
 # HTTParty HTTP Digest Auth patch
 HTTParty::Request.class_eval do
@@ -40,18 +40,12 @@ module MsTwitter module MsApi
     def search(image_url)
       r = Ep::post("/v2/search",{body:"",query:{image_url:image_url}})
       r = JSON.parse(r.body)
-      return nil unless r["found"]
-      t = case ((enc = r["id"]).size % 4)
-        when 2; "#{enc}=="
-        when 3; "#{enc}="
-      else enc end
-      Base64.urlsafe_decode64(t)
+      r["found"] ? Base64.urlsafe_decode64(r["id"],true) : nil
     end
 
     def add(image_fname,text)
       text.length.must_be <= 118
-      enc = Base64.urlsafe_encode64(text)
-      2.times{enc.chomp!('=')}
+      enc = Base64.urlsafe_encode64(text,true)
       body,headers = File.open(image_fname,'rb') do |f|
         mp = RestClient::Payload::Multipart.new(image_file:f)
         [mp.read,mp.headers]
