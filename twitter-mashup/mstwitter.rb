@@ -103,7 +103,7 @@ module MsTwitter class Worker
         status[:entities][:urls].each do |x|
           image_url = image_url_for(orig_url = x[:expanded_url] || x[:url])
           puts "url: #{orig_url} -> #{image_url}"
-          if (image_url = image_url_for(x[:expanded_url]||x[:url])).nil?
+          if image_url.nil?
             puts "Invalid URL"; next
           end
           unless (text = MsApi.search(image_url))
