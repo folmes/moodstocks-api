@@ -6,7 +6,7 @@
 # bash base64url.sh decode SGVsbG8h
 
 function encode {
-  echo -n "$1" | openssl enc -a | tr -d '=' | tr '+/' '-_'
+  echo -n "$1" | openssl enc -a | tr -d '=\n' | tr '+/' '-_'
 }
 
 function decode {
