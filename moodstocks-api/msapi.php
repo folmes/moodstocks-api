@@ -10,8 +10,8 @@ $id = "test1234";
 // CURL
 $curl_opts = array(
   CURLOPT_RETURNTRANSFER=>true,
-	CURLOPT_HTTPAUTH=>CURLAUTH_DIGEST,
-	CURLOPT_USERPWD=>$key.":".$secret
+  CURLOPT_HTTPAUTH=>CURLAUTH_DIGEST,
+  CURLOPT_USERPWD=>$key.":".$secret
 );
 $api_ep = "http://api.moodstocks.com/v2";
 
