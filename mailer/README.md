@@ -10,4 +10,4 @@ Please refer to the [related article](https://github.com/Moodstocks/moodstocks-a
 
 ## Feedback
 
-Feel free to [let us know](http://forum.moodstocks.com/) if you enjoyed it. Feedback welcome!
+Feel free to [let us know](https://moodstocks.campfirenow.com/2416e) if you enjoyed it. Feedback welcome!
