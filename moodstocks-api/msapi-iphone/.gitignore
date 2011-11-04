@@ -1,0 +1,6 @@
+MSApi.xcodeproj/*.pbxuser
+MSApi.xcodeproj/*.mode*
+MSApi.xcodeproj/*.perspectivev3
+MSApi.xcodeproj/*.xcworkspace/
+MSApi.xcodeproj/xcuserdata/
+build/
