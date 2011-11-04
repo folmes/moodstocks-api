@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		825BD5791464445A006EF434 /* Moodstocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 825BD5781464445A006EF434 /* Moodstocks.m */; };
 		8277107514643613000F7539 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277107414643613000F7539 /* UIKit.framework */; };
 		8277107714643613000F7539 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277107614643613000F7539 /* Foundation.framework */; };
 		8277107914643613000F7539 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8277107814643613000F7539 /* CoreGraphics.framework */; };
@@ -36,12 +37,13 @@
 		82F1911A146437C90033B0B8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F19119146437C90033B0B8 /* AVFoundation.framework */; };
 		82F1911C146437D60033B0B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F1911B146437D60033B0B8 /* libz.dylib */; };
 		82F1911F146437F40033B0B8 /* MSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F1911E146437F40033B0B8 /* MSUtils.m */; };
-		82F19122146438760033B0B8 /* Moodstocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F19120146438760033B0B8 /* Moodstocks.m */; };
 		82F19126146438C90033B0B8 /* MSLaserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F19125146438C90033B0B8 /* MSLaserView.m */; };
 		82F19129146438F80033B0B8 /* MSScannerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F19128146438F80033B0B8 /* MSScannerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		825BD5771464445A006EF434 /* Moodstocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Moodstocks.h; sourceTree = "<group>"; };
+		825BD5781464445A006EF434 /* Moodstocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moodstocks.m; sourceTree = "<group>"; };
 		8277107014643613000F7539 /* MSApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8277107414643613000F7539 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8277107614643613000F7539 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,8 +96,6 @@
 		82F1911B146437D60033B0B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		82F1911D146437F40033B0B8 /* MSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSUtils.h; sourceTree = "<group>"; };
 		82F1911E146437F40033B0B8 /* MSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSUtils.m; sourceTree = "<group>"; };
-		82F19120146438760033B0B8 /* Moodstocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Moodstocks.m; path = ../../../../../checkmein/ipad/CheckMeIn/Moodstocks.m; sourceTree = "<group>"; };
-		82F19121146438760033B0B8 /* Moodstocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Moodstocks.h; path = ../../../../../checkmein/ipad/CheckMeIn/Moodstocks.h; sourceTree = "<group>"; };
 		82F19124146438C90033B0B8 /* MSLaserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSLaserView.h; sourceTree = "<group>"; };
 		82F19125146438C90033B0B8 /* MSLaserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSLaserView.m; sourceTree = "<group>"; };
 		82F19127146438F80033B0B8 /* MSScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSScannerController.h; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 		82F190DE146437230033B0B8 /* HTTP Client */ = {
 			isa = PBXGroup;
 			children = (
-				82F19120146438760033B0B8 /* Moodstocks.m */,
-				82F19121146438760033B0B8 /* Moodstocks.h */,
+				825BD5771464445A006EF434 /* Moodstocks.h */,
+				825BD5781464445A006EF434 /* Moodstocks.m */,
 			);
 			name = "HTTP Client";
 			sourceTree = "<group>";
@@ -363,9 +363,9 @@
 				82F1910B1464378F0033B0B8 /* SBJsonBase.m in Sources */,
 				82F1910C1464378F0033B0B8 /* NSString+SBJSON.m in Sources */,
 				82F1911F146437F40033B0B8 /* MSUtils.m in Sources */,
-				82F19122146438760033B0B8 /* Moodstocks.m in Sources */,
 				82F19126146438C90033B0B8 /* MSLaserView.m in Sources */,
 				82F19129146438F80033B0B8 /* MSScannerController.m in Sources */,
+				825BD5791464445A006EF434 /* Moodstocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
