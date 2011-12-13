@@ -23,7 +23,7 @@ As indicated you need first:
 
 1.   [to register for an account](http://extranet.moodstocks.com/signup) on Moodstocks API,
 2.   [to create an API key](http://extranet.moodstocks.com/access_keys/new),
-3.   [to index your own reference images](https://github.com/Moodstocks/moodstocks-api/wiki/api-v2-doc#add-object).
+3.   [to index your own reference images](https://github.com/Moodstocks/moodstocks-api/wiki/api-v2-doc#wiki-add-object).
 
 Then:
 
