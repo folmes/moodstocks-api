@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+	
+    <!-- Camera preview -->
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    
+    <!-- Capture Button -->
+    <ImageButton
+        android:id="@+id/capture_button"
+        style="@android:style/Animation"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:scaleType="fitXY"
+        android:layout_marginRight="20px"
+        android:src="@drawable/camera" />
+    
+    <!-- Flash and freeze effect -->
+    	<ImageView
+        android:id="@+id/freeze"
+        android:visibility="gone"
+        android:scaleType="fitXY"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ImageView>
+    <ImageView
+        android:id="@+id/flash"
+        android:background="#ffffffff"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ImageView>
+    
+    <!-- spinning progress view to inform the user 
+    	 that the camera is focussing -->
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:indeterminate="true"
+        android:indeterminateBehavior="repeat" />
+    
+    <!-- Laser effect -->
+    <View
+        android:id="@+id/laser"
+        android:background="@drawable/laser"
+        android:layout_width="60dp" 
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-60dp"
+        android:visibility="gone" />
+    
+    <!-- Camera picture displayed while camera
+    	 is initializing -->
+    <ImageView
+        android:id="@+id/camera_loading"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/camera" >
+    </ImageView>
+
+</RelativeLayout>
