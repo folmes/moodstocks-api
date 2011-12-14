@@ -12,6 +12,9 @@ function ms_api {
     add)    ms_api_call "ref/$3" --form image_file=@"$2" -X PUT ;;
     del)    ms_api_call "ref/$2" -X DELETE ;;
     echo)   ms_api_call "echo/?$2" ;;
+    info)   ms_api_call "/ref/$2" ;;
+    mkoff)  ms_api_call "/ref/$2/offline" -X POST ;;
+    rmoff)  ms_api_call "/ref/$2/offline" -X DELETE ;;
     search) ms_api_call "search" --form image_file=@"$2" ;;
     stats)  ms_api_call "stats/$2" ;;
   esac; echo
