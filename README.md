@@ -14,7 +14,7 @@ We provide [code snippets](https://github.com/Moodstocks/moodstocks-api/tree/mas
 
 ## SDK
 
-Do you need to integrate a scanner into your mobile application? If so you should check out our client-side [SDK](https://github.com/Moodstocks/moodstocks-sdk). It acts as a client for the API but also as an offline cache, allowing you to make faster scanners that work even with no network connectivity.
+Do you need to integrate a scanner into your mobile application? If so you should check out our client-side [SDK](https://github.com/Moodstocks/moodstocks-sdk). It acts as a client for the API but also as an **offline cache**, allowing you to make **faster** scanners that work even with **no network connectivity**.
 
 ## Help
 
