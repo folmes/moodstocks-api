@@ -12,6 +12,10 @@ We provide [code snippets](https://github.com/Moodstocks/moodstocks-api/tree/mas
 *   [FAQ](https://github.com/Moodstocks/moodstocks-api/wiki/faq),
 *   [Articles & Tutorials](https://github.com/Moodstocks/moodstocks-api/wiki/articles).
 
+## SDK
+
+Do you need to integrate a scanner into your mobile application? If so you will need to use our client-side [SDK](https://github.com/Moodstocks/moodstocks-sdk).
+
 ## Help
 
 We're here to help! Feel free to join us on our [support chat](http://moodstocks.campfirenow.com/2416e) which is inhabited weekdays from [9am CET](http://www.wolframalpha.com/input/?i=9am+CET) to [7pm CET](http://www.wolframalpha.com/input/?i=7pm+CET).
