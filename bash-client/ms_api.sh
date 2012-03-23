@@ -13,7 +13,7 @@ function ms_api {
     del)    ms_api_call "ref/$2" -X DELETE ;;
     echo)   ms_api_call "echo/?$2" ;;
     info)   ms_api_call "/ref/$2" ;;
-    mkoff)  ms_api_call "/ref/$2/offline" -X POST ;;
+    mkoff)  ms_api_call "/ref/$2/offline" -d "x" -X POST ;;
     rmoff)  ms_api_call "/ref/$2/offline" -X DELETE ;;
     search) ms_api_call "search" --form image_file=@"$2" ;;
     stats)  ms_api_call "stats/$2" ;;
