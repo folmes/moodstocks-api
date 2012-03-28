@@ -18,7 +18,7 @@ Do you need to integrate a scanner into your mobile application? If so you shoul
 
 ## Help
 
-We're here to help! Feel free to join us on our [support chat](http://moodstocks.campfirenow.com/2416e) which is inhabited weekdays from [9am CET](http://www.wolframalpha.com/input/?i=9am+CET) to [7pm CET](http://www.wolframalpha.com/input/?i=7pm+CET).
+We're here to help! Feel free to join us on our [support chat](https://moodstocks.campfirenow.com/55fdb) which is inhabited weekdays from [9am CET](http://www.wolframalpha.com/input/?i=9am+CET) to [7pm CET](http://www.wolframalpha.com/input/?i=7pm+CET).
 
 ## Copyright
 
