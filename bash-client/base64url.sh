@@ -14,7 +14,7 @@ function decode {
   if [ $_l -eq 2 ]; then _s="$1"'=='
   elif [ $_l -eq 3 ]; then _s="$1"'='
   else _s="$1" ; fi
-  echo "$_s" | openssl enc -d -a -A
+  echo "$_s" | tr '-_' '+/' | openssl enc -d -a -A
 }
 
 case $1 in
