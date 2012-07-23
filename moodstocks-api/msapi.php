@@ -30,14 +30,20 @@ $opts = $curl_opts;
 $opts[CURLOPT_URL] = $api_ep."/echo?".http_build_query($params);
 disp($opts);
 
-// Adding objects to recognize
+// Adding a reference image
 $opts = $curl_opts;
 $opts[CURLOPT_URL] = $api_ep."/ref/".$id;
 $opts[CURLOPT_POSTFIELDS] = array("image_file"=>"@".$image_filename);
 $opts[CURLOPT_CUSTOMREQUEST] = "PUT";
 disp($opts);
 
-// Looking up objects
+// Making an image available offline
+$opts = $curl_opts;
+$opts[CURLOPT_URL] = $api_ep."/ref/".$id."/offline";
+$opts[CURLOPT_CUSTOMREQUEST] = "POST";
+disp($opts);
+
+// Using online search
 $opts = $curl_opts;
 $opts[CURLOPT_URL] = $api_ep."/search";
 $opts[CURLOPT_POSTFIELDS] = array("image_file"=>"@".$image_filename);

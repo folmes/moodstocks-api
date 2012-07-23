@@ -23,15 +23,20 @@ def disp(r):
 
 # Authenticating with your API key (Echo service)
 qstring = urllib.urlencode({"foo":"bar","bacon":"chunky"})
-disp(opener.open("%s?%s" % (api_ep+"/echo",qstring))) 
+disp(opener.open("%s?%s" % (api_ep+"/echo",qstring)))
 
-# Adding objects to recognize
+# Adding a reference image
 imgdata = {"image_file":open(image_filename,"rb")}
 req = urllib2.Request(api_ep+"/ref/"+id,imgdata)
 req.get_method = lambda: "PUT"
 disp(multipart_opener.open(req))
 
-# Looking up objects
+# Making an image available offline
+req = urllib2.Request(api_ep+"/ref/"+id+"/offline","")
+req.get_method = lambda: "POST"
+disp(opener.open(req))
+
+# Using online search
 disp(multipart_opener.open(api_ep+"/search",imgdata))
 
 # Updating a reference & using a hosted image

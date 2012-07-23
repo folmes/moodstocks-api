@@ -12,7 +12,7 @@ size_t static disp(void *buffer,size_t size,size_t nmemb,void *userp){
 }
 
 int main(int argc,char **argv){
-  
+
   /* Settings */
   char *key = "YourApiKey";
   char *secret = "YourApiSecret";
@@ -55,8 +55,8 @@ int main(int argc,char **argv){
   curl_easy_perform(curl);
   curl_easy_cleanup(curl);
 
-  /* Adding objects to recognize */
-  
+  /* Adding a reference image */
+
   strcpy(url,api_ep); strcat(url,"/ref/"); strcat(url,id);
 
   curl = curl_easy_init();
@@ -71,7 +71,23 @@ int main(int argc,char **argv){
   curl_easy_perform(curl);
   curl_easy_cleanup(curl);
 
-  /* Looking up objects */
+  /* Making an image available offline */
+
+  strcpy(url,api_ep); strcat(url,"/ref/");
+  strcat(url,id); strcat(url,"/offline");
+
+  curl = curl_easy_init();
+  curl_easy_setopt(curl,CURLOPT_HTTPAUTH,CURLAUTH_DIGEST);
+  curl_easy_setopt(curl,CURLOPT_URL,url);
+  curl_easy_setopt(curl,CURLOPT_USERPWD,kpw);
+  curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,disp);
+
+  curl_easy_setopt(curl,CURLOPT_CUSTOMREQUEST,"POST");
+
+  curl_easy_perform(curl);
+  curl_easy_cleanup(curl);
+
+  /* Using online search */
 
   strcpy(url,api_ep); strcat(url,"/search");
 

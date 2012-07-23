@@ -14,10 +14,13 @@ function disp {
 # Authenticating with your API key (Echo service)
 disp "echo?foo=bar&bacon=chunky"
 
-# Adding objects to recognize
+# Adding a reference image
 disp "ref/$id" --form image_file=@"$image_filename" -X PUT
 
-# Looking up objects
+# Making an image available offline
+disp "ref/$id/offline" -X POST
+
+# Using online search
 disp "search" --form image_file=@"$image_filename"
 
 # Updating a reference & using a hosted image

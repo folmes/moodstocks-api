@@ -21,7 +21,7 @@ sub disp{print shift->content."\n"}
 # Authenticating with your API key (Echo service)
 disp($browser->get($ep."/echo?foo=bar"));
 
-# Adding objects to recognize
+# Adding a reference image
 my $rq = POST(
   $sample_resource,
   Content_Type => "form-data",
@@ -30,7 +30,10 @@ my $rq = POST(
 $rq->method("PUT");
 disp($browser->request($rq));
 
-# Looking up objects
+# Removing reference images
+disp($browser->request(HTTP::Request->new("POST",$sample_resource."/offline")));
+
+# Using online search
 disp($browser->request(
   POST $ep."/search",
   Content_Type => "form-data",

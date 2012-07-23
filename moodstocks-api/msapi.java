@@ -1,13 +1,20 @@
 /*
  * This snippet is not good Java style and we are aware of it.
  * However we thought it was simpler for example purpose.
- * 
- * It works with Apache HttpClient 4.1.1, which can be used on Android.
+ *
+ * It works with Apache HttpClient 4, which can be used on Android.
  * Feel free to use any other library of your choice.
  * However, please note that you should not use Jersey since its
  * Digest Authentication code appears to be broken with query strings.
+ *
+ * To run under any sane Unix:
+ * - create directory called 'moodstocks';
+ * - move this file to this directory and rename it 'ApiDemo.java';
+ * - make sure HttpClient is in your CLASSPATH;
+ * - make sure there is a 'sample.jpg' file in the 'moodstocks' directory;
+ * - run: `javac moodstocks/ApiDemo.java`;
+ * - run: `java moodstocks.ApiDemo`.
  */
-
 
 package moodstocks;
 
@@ -48,7 +55,7 @@ public class ApiDemo {
             ApiDemo.class.getResource("sample.jpg").getPath();
     private static String imageUrl = "http://api.moodstocks.com/static/sample-book.jpg";
     private static String sampleId = "test1234";
-    
+
     // Boilerplate
     private static HttpHost targetHost;
     private static BasicHttpContext context;
@@ -84,34 +91,38 @@ public class ApiDemo {
         HttpGet rq1 = new HttpGet("/v2/echo?foo=bar");
         disp(rq1);
 
-        // Image + Multipart 
+        // Image + Multipart
         File image = new File(imageFilename);
         ContentBody body =
                 new FileBody(image, "image/jpeg", "image_file", null);
         MultipartEntity multipartContent = new MultipartEntity();
         multipartContent.addPart("image_file", body);
 
-        // Adding objects to recognize
+        // Adding a reference image
         String sampleResource = "/v2/ref/" + sampleId;
         HttpPut rq2 = new HttpPut(sampleResource);
         rq2.setEntity(multipartContent);
         disp(rq2);
 
-        // Looking up objects
-        HttpPost rq3 = new HttpPost("/v2/search");
-        rq3.setEntity(multipartContent);
+        // Making an image available offline
+        HttpPost rq3 = new HttpPost(sampleResource + "/offline");
         disp(rq3);
 
-        // Updating a reference & using a hosted image
-        List<NameValuePair> rq4params = new ArrayList<NameValuePair>();
-        rq4params.add(new BasicNameValuePair("image_url", imageUrl));
-        String rq4qs = URLEncodedUtils.format(rq4params, "UTF-8");
-        HttpPut rq4 = new HttpPut("/v2/ref/" + sampleId + "?" + rq4qs);
+        // Using online search
+        HttpPost rq4 = new HttpPost("/v2/search");
+        rq4.setEntity(multipartContent);
         disp(rq4);
-        
+
+        // Updating a reference & using a hosted image
+        List<NameValuePair> rq5params = new ArrayList<NameValuePair>();
+        rq5params.add(new BasicNameValuePair("image_url", imageUrl));
+        String rq5qs = URLEncodedUtils.format(rq5params, "UTF-8");
+        HttpPut rq5 = new HttpPut("/v2/ref/" + sampleId + "?" + rq5qs);
+        disp(rq4);
+
         // Removing reference images
-        HttpDelete rq5 = new HttpDelete(sampleResource);
-        disp(rq5);
+        HttpDelete rq6 = new HttpDelete(sampleResource);
+        disp(rq6);
 
         clean();
 
