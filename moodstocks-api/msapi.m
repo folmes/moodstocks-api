@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 
 
     /**
-     * Adding objects to recognize
+     * Adding a reference image
      */
     UIImage* image = [UIImage imageNamed:kMSImageFilename];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.75);
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
     } // end of add
 
     /**
-     * Looking up objects
+     * Using online search
      */
     {
         ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:kMSAPISearchURL]];
