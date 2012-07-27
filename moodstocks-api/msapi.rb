@@ -1,4 +1,6 @@
-%w{rubygems httparty rest-client uri json}.each{|x| require x}
+# NOTE: get rufus-verbs at https://github.com/catwell/rufus-verbs
+
+%w{rubygems rufus-verbs rest-client uri json}.each{|x| require x}
 
 # Settings
 @@key = "YourApiKey"
@@ -7,43 +9,54 @@ image_filename = "sample.jpg"
 image_url = "http://api.moodstocks.com/static/sample-book.jpg"
 id = "test1234"
 
-# HTTParty HTTP Digest Auth patch
-HTTParty::Request.class_eval do
-  alias :orig_setup_digest_auth :setup_digest_auth
-  def setup_digest_auth
-    options.delete(:headers)
-    orig_setup_digest_auth
+class MSApi; include Rufus::Verbs
+
+  attr_reader :ep
+
+  def initialize
+    @ep = EndPoint.new({
+      host: "api.moodstocks.com",
+      port: 80,
+      resource: "v2",
+      digest_authentication: [@@key,@@secret],
+    })
   end
+
+  def disp(r)
+    if r.code.to_i == 200
+      puts "[OK]\t#{JSON.parse(r.body)}"
+    else
+      puts "[ERROR]\t#{r.code} #{r.body}"
+    end
+  end
+
+  def do(verb,resource,pp={})
+    disp ep.send(verb,pp.merge(id: resource))
+  end
+
 end
 
-class MSApi
-  include HTTParty
-  base_uri("http://api.moodstocks.com")
-  digest_auth(@@key,@@secret)
-end
-ep = "/v2"
-
-# Results handler
-def disp(r)
-  puts JSON.parse(r.body)
-end
+MS = MSApi.new
 
 # Authenticating with your API key (Echo service)
-disp(MSApi::get("#{ep}/echo",{query:{foo:"bar",bacon:"chunky"}}))
+MS.do(:get,"echo",{params:{query:{foo:"bar",bacon:"chunky"}}})
 
-# Adding objects to recognize
+# Adding a reference image
 body,headers = File.open(image_filename,'rb') do |f|
   mp = RestClient::Payload::Multipart.new(image_file:f)
   [mp.read,mp.headers]
 end
-imgdata = {body:body,headers:headers}
-disp(MSApi::put("#{ep}/ref/#{id}",imgdata))
+imgdata = {data:body,headers:headers}
+MS.do(:put,"ref/#{id}",imgdata)
 
-# Looking up objects
-disp(MSApi::post("#{ep}/search",imgdata))
+# Making an image available offline
+MS.do(:post,"ref/#{id}/offline",{data:""})
+
+# Using online search
+MS.do(:post,"search",imgdata)
 
 # Updating a reference & using a hosted image
-disp(MSApi::put("#{ep}/ref/#{id}",{body:"",query:{image_url:image_url}}))
+MS.do(:put,"ref/#{id}",{data:"",query:{image_url:image_url}})
 
 # Removing reference images
-disp(MSApi::delete("#{ep}/ref/#{id}"))
+MS.do(:delete,"ref/#{id}")
