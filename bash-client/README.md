@@ -72,7 +72,7 @@ You should see:
 <a name="base64-url"/>
 ## Encoding IDs in Base64-URL
 
-Maybe you want to use our [Base64-URL](https://github.com/Moodstocks/moodstocks-api/wiki/api-v2-doc#data-in-id) trick, for instance to encode URLs in the IDs. This is such a common use case that we have made it very easy for you. You just have to download the base64url script:
+Maybe you want to use our [Base64-URL](https://github.com/Moodstocks/moodstocks-api/wiki/api-v2-doc#wiki-data-in-id) trick, for instance to encode URLs in the IDs. This is such a common use case that we have made it very easy for you. You just have to download the base64url script:
 
     curl -sLO https://github.com/Moodstocks/moodstocks-api/raw/master/bash-client/base64url.sh
 
