@@ -4,7 +4,7 @@ Official repository for the [Moodstocks](http://www.moodstocks.com/) image recog
 
 ## Code snippets
 
-We provide [code snippets](https://github.com/Moodstocks/moodstocks-api/tree/master/moodstocks-api) for [Ruby](https://github.com/Moodstocks/moodstocks-api/blob/master/moodstocks-api/msapi.rb), [Python](https://github.com/Moodstocks/moodstocks-api/blob/master/moodstocks-api/msapi.py), [iOS](https://github.com/Moodstocks/moodstocks-api/tree/master/moodstocks-api/msapi-iphone), [Android](https://github.com/Moodstocks/moodstocks-api/tree/master/moodstocks-api/msapi-android), etc.
+We provide [code snippets](https://github.com/Moodstocks/moodstocks-api/tree/master/moodstocks-api) for [Ruby](https://github.com/Moodstocks/moodstocks-api/blob/master/moodstocks-api/msapi.rb), [Python](https://github.com/Moodstocks/moodstocks-api/blob/master/moodstocks-api/msapi.py), [iOS](https://github.com/Moodstocks/moodstocks-api/tree/master/moodstocks-api/msapi-iphone), [Android](https://github.com/Moodstocks/moodstocks-api/tree/master/moodstocks-api/msapi-android), etc as well as a command-line [bash client](https://github.com/Moodstocks/moodstocks-api/tree/master/bash-client).
 
 ## Resources
 
