@@ -18,8 +18,8 @@ function decode {
 }
 
 case $1 in
-  encode) encode $2 ;;
+  encode) encode "$2" ;;
   decode) decode $2 ;;
-  e) encode $2 ;;
+  e) encode "$2" ;;
   d) decode $2 ;;
 esac
