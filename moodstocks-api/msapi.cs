@@ -170,7 +170,7 @@ namespace MoodStocks {
             request.ContentType = contentType;
             request.UserAgent = userAgent;
 
-            // We need to count how many bytes we're sending. 
+            // We need to count how many bytes we're sending.
             request.ContentLength = formData.Length;
 
             using (Stream requestStream = request.GetRequestStream()) {

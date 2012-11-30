@@ -30,7 +30,7 @@ my $rq = POST(
 $rq->method("PUT");
 disp($browser->request($rq));
 
-# Removing reference images
+# Making an image available offline
 disp($browser->request(HTTP::Request->new("POST",$sample_resource."/offline")));
 
 # Using online search

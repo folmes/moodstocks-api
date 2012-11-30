@@ -21,7 +21,7 @@
  *   json-framework
  *   See https://github.com/stig/json-framework
  */
- 
+
 #import "JSON.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
@@ -118,12 +118,12 @@ int main(int argc, char *argv[]) {
      */
     {
         ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:objectURL]];
-        [request setUserInfo:[NSDictionary dictionaryWithObject:@"update" forKey:@"context"]]; 
+        [request setUserInfo:[NSDictionary dictionaryWithObject:@"update" forKey:@"context"]];
         [request setRequestMethod:@"PUT"];
         [request setPostValue:kMSImageURL forKey:@"image_url"];
         [request setAuthenticationScheme:(NSString *) kCFHTTPAuthenticationSchemeDigest];
         [request setUsername:kMSAPIKey];
-        [request setPassword:kMSAPISecret];    
+        [request setPassword:kMSAPISecret];
         [request startSynchronous];
         NSError* error = [request error];
         if (!error)
