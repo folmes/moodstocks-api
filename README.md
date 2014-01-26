@@ -9,13 +9,13 @@ We provide [code snippets](https://github.com/Moodstocks/moodstocks-api/tree/mas
 ## Resources
 
 *   [Documentation](https://moodstocks.com/documentation/),
-*   [FAQ](https://moodstocks.com/documentation/overview/faq/),
+*   [FAQ](https://moodstocks.com/documentation/faq/),
 *   [Articles & Tutorials](https://github.com/Moodstocks/moodstocks-api/wiki/articles).
 
 ## SDK
 
-Do you need to integrate a scanner into your mobile application? If so you should check out our client-side [SDK](https://moodstocks.com/documentation/user-guides). It acts as a client for the API but also as an **offline cache**, allowing you to make **faster** scanners that work even with **no network connectivity**.
+Do you need to integrate a scanner into your mobile application? If so you should check out our client-side [SDK](https://moodstocks.com/documentation/getting-started/). It acts as a client for the API but also as an **offline cache**, allowing you to make **faster** scanners that work even with **no network connectivity**.
 
 ## Copyright
 
-Copyright (c) 2013 Moodstocks SAS
+Copyright (c) 2014 Moodstocks SAS
